@@ -64,10 +64,12 @@ public:
     SearchBox(QWidget *parent = 0);
 
 public slots:
+    void changeSearchUrl(int);
 protected slots:
     void doSearch();
 private:
     GSuggestCompletion *completer;
+    QString searchUrl;
 //! [1]
 };
 

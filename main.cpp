@@ -49,12 +49,12 @@
 ****************************************************************************/
 
 #include <QApplication>
-#include "searchbox.h"
+#include "mainwindow.h"
 
 int main(int argc, char * argv[])
 {
     QApplication app(argc, argv);
-    SearchBox *searchBox = new SearchBox();
-    searchBox->show();
+    MainWindow *mainWindow = new MainWindow();
+    mainWindow->show();
     return app.exec();
 }

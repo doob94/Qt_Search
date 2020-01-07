@@ -201,7 +201,7 @@ void GSuggestCompletion::autoSuggest()
 //! [8]
 void GSuggestCompletion::preventSuggest()
 {
-//    timer->stop();
+    timer->stop();
 }
 //! [8]
 
