@@ -77,11 +77,11 @@ GSuggestCompletion::GSuggestCompletion(QLineEdit *parent): QObject(parent), edit
     connect(popup, SIGNAL(itemClicked(QTreeWidgetItem*,int)),
             SLOT(doneCompletion()));
 
-//    timer = new QTimer(this);
-//    timer->setSingleShot(true);
-//    timer->setInterval(500);
-//    connect(timer, SIGNAL(timeout()), SLOT(autoSuggest()));
-    connect(editor, SIGNAL(textEdited(QString)), this, SLOT(autoSuggest()));
+    timer = new QTimer(this);
+    timer->setSingleShot(true);
+    timer->setInterval(500);
+    connect(timer, SIGNAL(timeout()), SLOT(autoSuggest()));
+    connect(editor, SIGNAL(textEdited(QString)), timer, SLOT(start()));
 
     connect(&networkManager, SIGNAL(finished(QNetworkReply*)),
             this, SLOT(handleNetworkData(QNetworkReply*)));

@@ -55,11 +55,9 @@
 #include "googlesuggest.h"
 
 #define GSEARCH_URL "http://www.google.com/search?q=%1"
-#define NSEARCH_URL "https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=%1"
 //! [1]
 SearchBox::SearchBox(QWidget *parent): QLineEdit(parent)
 {
-    searchUrl = GSEARCH_URL;
 
     completer = new GSuggestCompletion(this);
 
@@ -76,30 +74,7 @@ SearchBox::SearchBox(QWidget *parent): QLineEdit(parent)
 void SearchBox::doSearch()
 {
     completer->preventSuggest();
-    QString url = searchUrl.arg(text());
+    QString url = QString(GSEARCH_URL).arg(text());
     QDesktopServices::openUrl(QUrl(url));
 }
 //! [2]
-
-void SearchBox::doSearch(QString text)
-{
-    completer->preventSuggest();
-    QString url = searchUrl.arg(text);
-    QDesktopServices::openUrl(QUrl(url));
-}
-
-void SearchBox::ChangeSearchEngine(int index)
-{
-    if(index == 0)
-    {
-        searchUrl = GSEARCH_URL;
-    }
-    else if(index == 1)
-    {
-        searchUrl = NSEARCH_URL;
-    }
-    else
-    {
-
-    }
-}
